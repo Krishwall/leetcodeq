@@ -1,5 +1,4 @@
-#include<map>
-#include<string.h>
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
