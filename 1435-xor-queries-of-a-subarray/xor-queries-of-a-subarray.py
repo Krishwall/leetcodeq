@@ -5,7 +5,7 @@ class Solution:
         for i in range(len(arr)):
             preQ[i+1]=preQ[i]^arr[i]
 
-        for l,r in queries:
-            result.append(preQ[r+1]^preQ[l])
+        result=[preQ[r+1]^preQ[l] for l,r in queries]
+            
         return result   
             
