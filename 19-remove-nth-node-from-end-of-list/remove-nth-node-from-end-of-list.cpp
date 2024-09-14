@@ -26,7 +26,9 @@ public:
          }
         slow->next=slow->next->next;
 
-        return dummy->next;
+        ListNode* newHead=dummy->next;
+        delete dummy;
+        return newHead;
 
 
         
