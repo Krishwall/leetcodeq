@@ -35,7 +35,7 @@ public:
         }
         auto shiftk=tempNode->next;
         tempNode->next=nullptr;
-
+        
         return shiftk;
     }
 };
