@@ -8,11 +8,15 @@ class Solution:
         
         if not head:
             return None
+        if(k==0):
+            return head
         lastElement=head
         length=1
         while lastElement.next:
             lastElement=lastElement.next
             length+=1
+        if(length<2 or k%length == 0):
+            return head
         lastElement.next=head
 
         k%=length
@@ -21,5 +25,5 @@ class Solution:
             tempNode=tempNode.next
         shiftk=tempNode.next
         tempNode.next=None
-
+        
         return shiftk
