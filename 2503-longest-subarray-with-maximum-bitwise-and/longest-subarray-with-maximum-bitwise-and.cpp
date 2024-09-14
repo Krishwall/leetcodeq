@@ -4,7 +4,7 @@ public:
         auto maxel=max_element(nums.begin(),nums.end());
         int a=1,c=0;
 
-        for (auto num:nums)
+        for (int num:nums)
         {
             if (num==*maxel)
             {
