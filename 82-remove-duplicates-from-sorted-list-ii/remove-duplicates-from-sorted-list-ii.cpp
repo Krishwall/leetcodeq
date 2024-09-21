@@ -13,10 +13,10 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         if (!head || head->next==nullptr)
             return head;
-        auto dummy=new ListNode(0);
+        ListNode* dummy=new ListNode(0);
         dummy->next=head;
-        auto curr=head;
-        auto prev=dummy;
+        ListNode* curr=head;
+        ListNode* prev=dummy;
 
         while (curr)
         {
