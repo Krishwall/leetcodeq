@@ -1,9 +1,22 @@
 class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
-        nums=[str(i+1) for i in range(n)]
-        nums=sorted(nums)
-        nums=[int(i) for i in nums]
-        return nums
+        res=[]
+        if n==1:
+            return [1]
+        curr=1
+        while len(res)<n:
+            res.append(curr)
+            
+            if curr*10<=n:
+                curr*=10
+            else:
+                while(curr==n or curr%10==9):
+                    curr//=10
+                curr+=1
+        return res    
+            
+
+
         
         
 
