@@ -4,7 +4,7 @@ public:
     int findKthNumber(int n, int k) {
         int curr=1;
         k-=1;
-        long step;
+        int step;
 
         while(k>0)
         {
