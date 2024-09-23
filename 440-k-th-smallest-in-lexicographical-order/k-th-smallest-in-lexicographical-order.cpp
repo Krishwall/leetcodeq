@@ -25,9 +25,9 @@ public:
         }
         return curr;
     }
-        long countsteps(int n,long prefix1,long prefix2)
+        int countsteps(int n,long prefix1,long prefix2)
         {
-            long steps=0;
+            int steps=0;
             while(prefix1<=n){
                 steps+=min(static_cast<long>(n+1),prefix2)-prefix1;
                 prefix1*=10;
