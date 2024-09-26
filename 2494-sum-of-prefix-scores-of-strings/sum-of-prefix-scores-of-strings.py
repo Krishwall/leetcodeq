@@ -22,12 +22,32 @@ class Solution:
             node=node.next[ord(c)-ord("a")]
         return ans
     def sumPrefixScores(self, words: List[str]) -> List[int]:
-
-        for i in range(len(words)):
+        n=len(words)
+        for i in range(n):
             self.insert(words[i])
-        scores=[]
+        scores=[0]*n
 
-        for i in words:
-            scores.append(self.count(i))
+        for i in range(n):
+            scores[i]=self.count(words[i])
         return scores
+def kdsmain():
+    input_data = sys.stdin.read().strip()
+    lines = input_data.splitlines()
+    
+    num_test_cases = len(lines)
+    results = []
+
+    for i in range(num_test_cases):
+        words = json.loads(lines[i])
         
+        result = Solution().sumPrefixScores(words)
+
+        results.append(json.dumps(result, separators=(',', ':')))
+
+    with open('user.out', 'w') as f:
+        for result in results:
+            f.write(f"{result}\n")
+
+if __name__ == "__main__":
+    kdsmain()
+    exit(0)  
