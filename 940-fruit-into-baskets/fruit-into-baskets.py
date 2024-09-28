@@ -4,7 +4,8 @@ class Solution:
         left=0
         maxcount=0
         count=0
-        while left<len(fruits):
+        n=len(fruits)
+        while left<n:
             if len(a)==2:
                 
                 if fruits[left] in a:
