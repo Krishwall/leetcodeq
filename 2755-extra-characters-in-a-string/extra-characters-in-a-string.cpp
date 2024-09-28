@@ -29,6 +29,8 @@ public:
         
             
         }
+   
+        delete root;
         return dp[0];
 
     }
