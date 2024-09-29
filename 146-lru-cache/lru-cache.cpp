@@ -55,7 +55,7 @@ public:
     
     void put(int key, int value) {
         if (m.find(key)!=m.end()){
-            auto curr=m[key];
+            Node* curr=m[key];
             m.erase(key);
             deleteNode(curr);
         }
