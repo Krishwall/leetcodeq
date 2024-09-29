@@ -53,7 +53,7 @@ public:
         return -1;
     }
     
-    void put(int key, int value) {
+    inline void put(int key, int value) {
         if (m.find(key)!=m.end()){
             Node* curr=m[key];
             m.erase(key);
