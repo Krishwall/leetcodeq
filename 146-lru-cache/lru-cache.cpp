@@ -23,7 +23,7 @@ public:
         tail->prev=head;
         
     }
-    void addNode(Node* newnode){
+    inline void addNode(Node* newnode){
         Node* temp=head->next;
         newnode->next=temp;
         newnode->prev=head;
@@ -31,13 +31,13 @@ public:
         temp->prev=newnode;
     }
 
-    void deleteNode(Node* delnode){
+    inline void deleteNode(Node* delnode){
         Node* prevv=delnode->prev;
         Node* nextt=delnode->next;
         prevv->next=nextt;
         nextt->prev=prevv;
     }
-    int get(int key) {
+    inline int get(int key) {
 
         if (m.find(key)!=m.end()){
             Node* resNode=m[key];
