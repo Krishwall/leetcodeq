@@ -6,7 +6,7 @@ public:
             return {};
         vector<vector<int>> result(m,vector<int> (n));
 
-        for (int i=0;i<m;++i){
+        for (auto i=0;i<m;++i){
             result[i]=vector<int>(original.begin()+i*n,original.begin()+i*n+n);
         }
 
