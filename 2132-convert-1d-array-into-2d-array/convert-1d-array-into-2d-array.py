@@ -5,14 +5,15 @@ class Solution:
             return []
         
         result=[]
-        a=[]
-        for i in range(m*n):
-            if (i+1)%n==0:
-                a.append(original[i])
-                result.append(a)
-                a=[]
-            else: 
-                a.append(original[i])
+        k=0
+        for i in range(m):
+            a=[]
+            for j in range(n):
+                a.append(original[k])
+                k+=1
+            result.append(a)
+
+            
         return result
            
             
