@@ -1,8 +1,8 @@
 class Solution:
     def findChampion(self, grid: List[List[int]]) -> int:
-        
-        a=[0]*len(grid)
+        l=len(grid)
+        a=[0]*l
 
-        for i in range(len(grid)):
+        for i in range(l):
             a[i]=sum(grid[i])
         return a.index(max(a))
