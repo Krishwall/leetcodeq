@@ -1,6 +1,6 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        nums.sort()
+        
         n=max(nums)
         sums=[0]*(n+1)
         dp=[0]*(n+1)
