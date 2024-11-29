@@ -12,6 +12,6 @@ class Solution:
         for i in range(1,n):
             dp[i+1]=max(sums[i+1]+dp[i-1],dp[i])
 
-        return max(dp[n-1],dp[n])
+        return dp[n]
 
         
