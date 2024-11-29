@@ -6,7 +6,7 @@ class Solution:
         dp=[0]*(n+1)
         for num in nums:
             sums[num]+=num
-        dp[0]=0
+        
         dp[1]=sums[1]
 
         for i in range(1,n):
