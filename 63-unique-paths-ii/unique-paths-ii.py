@@ -15,7 +15,7 @@ class Solution:
                     if j>0:
                         dp[j]+=dp[j-1]
         
-        return dp[m-1]
+        return dp[-1]
 
 
            
