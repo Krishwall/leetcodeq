@@ -1,6 +1,6 @@
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        # grid[1][1]+=grid[0][0]+min(grid[1][0],grid[0][1])
+        
         n=len(grid)
         m=len(grid[0])
         for i in range(len(grid)):
