@@ -1,8 +1,9 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        def fact(f):
-            fa=1
-            for i in range(2,f+1):
-                fa*=i
-            return fa
-        return fact(m+n-2)//(fact(m-1)*fact(n-1))
+        dp=[[1]*n for i in range(m)]
+        for i,j in product(range(1,m), range(1,n)):
+            dp[i][j]= dp[i-1][j] +dp[i][j-1]
+        return dp[m-1][n-1]
+
+        
+
