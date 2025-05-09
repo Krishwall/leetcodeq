@@ -5,13 +5,13 @@ vector<vector<int>> ans;
             if(k<2 || k>9 || n<1 || n>60)
             return {};
             vector<int> sub;
-            vector<int> nums ={1,2,3,4,5,6,7,8,9};
-            backtrack(1,k,n,sub,nums);
+           
+            backtrack(1,k,n,sub);
             return ans;
         
     }
 
-    void backtrack(int idx,int k, int target,vector<int> sub,vector<int> nums)
+    void backtrack(int idx,int k, int target,vector<int> sub)
     {
         if (target==0 && k==0)
         {
@@ -22,7 +22,7 @@ vector<vector<int>> ans;
           {return ;}
          for (int i=idx;i<=9;i++) {
             sub.push_back(i);
-            backtrack(i+1,k-1,target-i,sub,nums);
+            backtrack(i+1,k-1,target-i,sub);
             sub.pop_back();
          }
         
