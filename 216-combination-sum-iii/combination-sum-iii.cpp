@@ -17,12 +17,13 @@ vector<vector<int>> ans;
             ans.push_back(sub);
             return;
         }
-        if (idx<=target && idx<10)
-        {sub.push_back(idx);
+        if (idx>target || idx>9)
+        return;
+        sub.push_back(idx);
         backtrack(idx+1,k-1,target-idx, sub);
         sub.pop_back();
         backtrack(idx+1,k,target, sub);
-        }
+        
        
 
     }
