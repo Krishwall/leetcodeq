@@ -14,7 +14,7 @@ vector<vector<string>> ans;
         return ans;
     }
 
-    void putQueenBacktrack(int col, vector<string>& board,  vector<int> leftRow, vector<int> upperDiagonal, vector<int> lowerDiagonal, int n)
+    void putQueenBacktrack(int col, vector<string>& board,  vector<int>& leftRow, vector<int>& upperDiagonal, vector<int>& lowerDiagonal, int n)
     {
        if(col==n)
        {
