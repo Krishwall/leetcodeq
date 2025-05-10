@@ -22,7 +22,7 @@ vector<vector<string>> ans;
         return ;
        }
        for(int row=0;row<n;++row)
-       {
+       
         if(leftRow[row]==0 && lowerDiagonal[row+col]==0 && upperDiagonal[n-1 +(col-row)]==0)
         {
 
@@ -33,12 +33,12 @@ vector<vector<string>> ans;
 
             putQueenBacktrack(col+1,board ,leftRow,upperDiagonal,lowerDiagonal,n );
 
-             board[row][col]='.';
+            board[row][col]='.';
             leftRow[row]=0;
             lowerDiagonal[row+col]=0;
             upperDiagonal[n-1 + (col-row)]=0;
         }
-       }
+       
         
     }
    
