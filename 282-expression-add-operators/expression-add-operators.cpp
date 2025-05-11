@@ -1,43 +1,48 @@
 class Solution {
 public:
-    vector<string> addOperators(string num, int target) {
-        vector<string> ans;
-        backtrackOperation(num, target, ans, 0, 0, 0, "");
-        return ans;
-    }
-    void backtrackOperation(string& num, int target, vector<string>& ans, long temp, 
-              long prevNum, int index, string s) {
-      
-        if (index == num.length()) {
-            if (temp == target) {
-                ans.push_back(s);
+    void solve(int index, string num, int target, vector<string>& ans, string& temp, long resSoFar, long prevNum) {
+        if(index == num.length()) {
+            if(target == resSoFar) {
+                ans.push_back(temp);
             }
             return;
         }
 
-        
-        for (int i = index; i < num.length(); i++) {
-            string currStr = num.substr(index, i - index + 1);
-            long currNum = stol(currStr);
+        string numStr;
+        long n = 0;
+        for(int i=index; i<num.length(); i++) {
+            if(i > index && num[index] == '0') // to avoid numbers with leading zeros
+                break;
 
-           
-            if (i > index && num[index] == '0') break;
+            numStr = num.substr(index, i - index + 1);
+            n = stol(numStr);
 
-            if (index == 0) {
-                
-                backtrackOperation(num, target, ans, currNum, currNum, i + 1, currStr);
+            string ori = temp;
+
+            if(index == 0) {
+                temp += numStr;
+                solve(i + 1, num, target, ans, temp, n, n);
+                temp = ori;
             } else {
-               
-                backtrackOperation(num, target, ans, temp + currNum, currNum, i + 1, s + "+" + currStr);
-                
-              
-                backtrackOperation(num, target, ans, temp - currNum, -currNum, i + 1, s + "-" + currStr);
-                
-                
-                backtrackOperation(num, target, ans, temp - prevNum + (prevNum * currNum),
-                     prevNum * currNum, i + 1, s + "*" + currStr);
+                temp += "+" + numStr;
+                solve(i + 1, num, target, ans, temp, resSoFar + n, n);
+                temp = ori;
+
+                temp += "-" + numStr;
+                solve(i + 1, num, target, ans, temp, resSoFar - n, -n);
+                temp = ori;
+
+                temp += "*" + numStr;
+                solve(i + 1, num, target, ans, temp, resSoFar - prevNum + (prevNum * n), prevNum * n);
+                temp = ori;
             }
         }
     }
 
+    vector<string> addOperators(string num, int target) {
+        vector<string> ans;
+        string temp = "";
+        solve(0, num, target, ans, temp, 0, 0);
+        return ans;
+    }
 };
