@@ -32,7 +32,7 @@ public:
     vector<int> pse(vector<int>& arr , int n ){
         stack<int> st ;
         vector<int> res(n); 
-        for(int l=0;l<arr.size();++l){
+        for(int l=0;l<n;++l){
             while(!st.empty() && arr[st.top()]> arr[l])
             st.pop();
             
