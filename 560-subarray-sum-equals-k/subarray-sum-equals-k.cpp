@@ -2,8 +2,8 @@ class Solution {
 public:
 int ans=0;
     int subarraySum(vector<int>& nums, int k) {
-        map<int,int> hashMap;
-    int ans=0,sum=0;
+        unordered_map<int,int> hashMap;
+    int ans=0,sum=0;hashMap[0] = 0; 
         for(int i=0;i<nums.size();++i)
 
         {   sum+=nums[i];
@@ -15,9 +15,7 @@ int ans=0;
                 ans+=hashMap[rem];
 
             
-            if(hashMap.find(sum)==hashMap.end())
-                hashMap[sum]=1;
-            else  hashMap[sum]+=1;
+            hashMap[sum]+=1;
         }
         return ans;
     }
