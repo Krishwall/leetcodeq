@@ -1,19 +1,19 @@
-#include<map>
-#include<vector>
-#include<string.h>
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int* arr;
-        unordered_map<int,int> m;
-        for(auto& a :nums)
-        {
-            m[a]++;
+        int count=1,element=nums[0];
+        for(int i=1;i<nums.size();++i)
+        {   if(nums[i]==element)
+             {
+                count++;
 
-        }
-        for (auto& b:m)
-        if (b.second>nums.size()/2)
-            return b.first;
-    return 1;
+             }
+             else{
+                count--;
+             }
+             if (count==0)
+                {element=nums[i];count=1;}
+
+        }return element;
     }
 };
