@@ -6,9 +6,9 @@ public:
         int j,k,sum,n=nums.size();
         for(int i=0;i<n-2;++i)
         {
+            if(i>0 && nums[i]==nums[i-1]) continue;
             j=i+1;
             k=n-1;
-            if(i>0 && nums[i]==nums[i-1]) continue;
             while(j<k)
                     {
                         sum=nums[i]+nums[j]+nums[k];
