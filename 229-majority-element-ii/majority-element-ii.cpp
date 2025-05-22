@@ -5,15 +5,7 @@ public:
         int n=nums.size();
         int ele2=INT_MIN;
         vector<int> ans;
-        // for(int i=0;i<n;++i)
-        // {
-        //     if(ele1!=nums[i])
-        //         {
-        //             ele2=nums[i];
-        //             idx=i;
-        //             break;
-        //         }
-        // }
+       
         int cnt1=0;
         int cnt2=0;
         for(int i=0;i<n;++i)
