@@ -28,13 +28,13 @@ public:
                 {ele2=nums[i];cnt2=1;}
             else {cnt1--;cnt2--;}
         }
-        int mini=n/3 +1;
+       
         cnt1=0;cnt2=0;
         for(int i=0;i<n;++i)
             {if( nums[i]==ele1) cnt1++;
             if (nums[i]==ele2) cnt2++;}
-        if (cnt1>=mini) ans.push_back(ele1);
-        if (cnt2>=mini) ans.push_back(ele2);
+        if (cnt1>=(n/3 +1)) ans.push_back(ele1);
+        if (cnt2>=(n/3 +1)) ans.push_back(ele2);
         return ans;
         
     }
