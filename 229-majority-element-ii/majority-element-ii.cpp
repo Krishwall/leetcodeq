@@ -3,7 +3,7 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         int ele1=INT_MIN;
         int n=nums.size();
-        int ele2=INT_MIN,idx=0;
+        int ele2=INT_MIN;
         vector<int> ans;
         // for(int i=0;i<n;++i)
         // {
