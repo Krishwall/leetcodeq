@@ -5,7 +5,7 @@ public:
         return 0;
         vector<bool> nums(n,1);
         
-        for(int i=2;i<n;++i)
+        for(int i=2;i*i<n;++i)
         {   if(nums[i]==1)
               {  
                 int c=2;
