@@ -1,12 +1,13 @@
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
-        return func(nums,k) - func(nums,k-1);
+        int n=nums.size();
+        return func(nums,k,n) - func(nums,k-1,n);
     } 
 
-    int func(vector<int>& nums , int k)
+    int func(vector<int>& nums , int k,int n)
     {   if(k<0) return 0;
-        int l=0,r=0,sum=0,n=nums.size(),arr_cnt=0;
+        int l=0,r=0,sum=0,arr_cnt=0;
         
         while(r<n)
         {   
