@@ -2,7 +2,7 @@ class Solution {
 public:
     int characterReplacement(string s, int k) {
         int n=s.length();
-        map<int,int> mpp;
+        int mpp[26]={0};
         int r=0,l=0,maxF=0,maxL=0;
 
         while(r<n)
