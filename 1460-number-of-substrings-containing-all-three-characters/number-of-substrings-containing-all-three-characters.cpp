@@ -12,7 +12,7 @@ public:
             lastSeen[s[r]-'a']=r;
 
             if(lastSeen[0] !=-1 && lastSeen[1]!=-1 && lastSeen[2]!=-1)
-                {count+=(1+min(lastSeen[0],min(lastSeen[1],lastSeen[2])));}
+                {count+=min(lastSeen[0], min(lastSeen[1], lastSeen[2]))+1;}
             r++;
 
         } 
