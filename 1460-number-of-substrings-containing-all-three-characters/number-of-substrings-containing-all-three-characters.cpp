@@ -2,7 +2,7 @@ class Solution {
 public:
     int numberOfSubstrings(string s) {
         
-        vector<int> lastSeen(3,-1);
+       int lastSeen[3]={-1,-1,-1};
 
         int l=0,r=0;int n=s.length();
         int count=0;
