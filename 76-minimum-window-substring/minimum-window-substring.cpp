@@ -3,7 +3,7 @@ public:
     string minWindow(string s, string t) {
        int m=s.length();
        int n=t.length();
-       vector<int> hash(256,0);
+       vector<int> hash(125,0);
        int count=0,minl=INT_MAX;
        int l=0,r=0,start_idx=-1; 
        for(int i=0;i<n;++i)
