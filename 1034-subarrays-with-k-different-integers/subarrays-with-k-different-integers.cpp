@@ -6,23 +6,24 @@ public:
     }
 
     int func(vector<int>& nums, int k,int n)
-    {   map<int,int> mpp;
-        int l=0,r=0,cnt=0;
+    {   
+        int l=0,r=0,cnt=0,ans=0;
+        vector<int> hash(n+1,0);
         while(r<n)
         {
-            mpp[nums[r]]++;
-
-            while(mpp.size()>k)
+            hash[nums[r]]++;
+            if(hash[nums[r]]==1) cnt++;
+            while(cnt>k)
             {
-                mpp[nums[l]]--;
-                if(mpp[nums[l]]==0) mpp.erase(nums[l]);
+                hash[nums[l]]--;
+                if(hash[nums[l]]==0) cnt--;
                  l++;   
 
             }
-           cnt+=r-l+1;
+           ans+=r-l+1;
             r++;
             
         }   
-        return cnt;
+        return ans;
     }
 };
