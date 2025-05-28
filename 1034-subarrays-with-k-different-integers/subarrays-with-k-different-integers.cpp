@@ -1,13 +1,14 @@
 class Solution {
 public:
     int subarraysWithKDistinct(vector<int>& nums, int k) {
-        return func(nums,k) - func(nums,k-1);
+        int n=nums.size();
+        return func(nums,k,n) - func(nums,k-1,n);
     }
 
-    int func(vector<int>& nums, int k)
+    int func(vector<int>& nums, int k,int n)
     {   map<int,int> mpp;
         int l=0,r=0,cnt=0;
-        while(r<nums.size())
+        while(r<n)
         {
             mpp[nums[r]]++;
 
