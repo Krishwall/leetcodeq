@@ -7,11 +7,12 @@ public:
         while(l<g.size() && r<s.size() )
         {
             if(g[l]<=s[r]){
-                {count+=1;
+                {r++;
                 l++;}
             }
+            else
             r++;
         }
-        return count;
+        return l;
     }
 };
