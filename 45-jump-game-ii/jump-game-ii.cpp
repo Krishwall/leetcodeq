@@ -12,9 +12,7 @@ public:
             {
                 farthest=max(farthest,idx+nums[idx]);
             }
-             if (farthest == r) {
-                return -1; // meaning you couldn't reach out the ranges
-            }
+            
             l=r+1; jumps++;
             r=farthest;
         }
