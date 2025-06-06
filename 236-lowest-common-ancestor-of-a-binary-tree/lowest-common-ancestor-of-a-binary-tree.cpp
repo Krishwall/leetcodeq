@@ -21,7 +21,7 @@ public:
             return right;
         else if(right==nullptr)
         return left;
-        else
-            {return root;}
+        
+        return root;
     }
 };
