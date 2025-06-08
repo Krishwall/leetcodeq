@@ -16,8 +16,8 @@ public:
         {
             return 0;
         }
-       int count=1+countNodes(root->left) +countNodes(root->right);
-       return count;
+       
+       return 1+countNodes(root->left) +countNodes(root->right);;
         
     }
 };
