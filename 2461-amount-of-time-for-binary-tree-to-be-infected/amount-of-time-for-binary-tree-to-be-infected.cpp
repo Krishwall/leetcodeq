@@ -11,78 +11,73 @@
  */
 class Solution {
 public:
-    int amountOfTime(TreeNode* root, int start) {
-        unordered_map<TreeNode*,TreeNode*> parent;
-        unordered_map<TreeNode*,bool> visited;
-        findParents(root,parent);
-        TreeNode* target;
-        findNode(root,start,target);
-        queue<TreeNode*> q;
-        visited[target]=true;
-        q.push(target);
-        int count=0;
-
-        while(!q.empty())
-        {   int fl=0;
-            int sz=q.size();
-           
-            for(int i=0;i<sz;++i)
-            {
-                TreeNode* curr=q.front();
-                q.pop();
-                if(curr->left && !visited[curr->left]){
-                    fl=1;
-                        q.push(curr->left);
-                        visited[curr->left]=true;
-                        
-                    }
-                    if(curr->right && !visited[curr->right]){
-                        fl=1;
-                        q.push(curr->right);
-                        visited[curr->right]=true;
-
-                    }
-                    if(parent[curr] && !visited[parent[curr]])
-                      {  fl=1;
-                        q.push(parent[curr]);
-                        visited[parent[curr]]=true;}
-                }
-               if(fl) count++;
-            }
-            return count;
+    int height(TreeNode* root) {
+        if (!root) {
+            return 0;
         }
-
-
-        
-    
-    void findNode(TreeNode* root,int start,TreeNode*& target)
+        int l = height(root->left);
+        int r = height(root->right);
+        return 1 + max(l, r);
+    }
+    void findNode(TreeNode* root,TreeNode*& target,int start)
     {   if(!root) return;
         if(root->val==start)
         {
             target=root;
             return ;
         }
-        findNode(root->left,start,target);
-        findNode(root->right,start,target);
+        findNode(root->left,target,start);
+        findNode(root->right,target,start);
     }
+    int burn(TreeNode* root, int start, int &timer) {
+        if (!root) {
+            return 0;
+        }
+        if (root->val == start) {
+            return -1;
+        }
+        int left = burn(root->left, start, timer);
+        int right = burn(root->right, start, timer);
+        if (left < 0) {
+            timer = max(timer, abs(left) + right);
+            return left - 1;
+        }
+        if (right < 0) {
+            timer = max(timer, abs(right) + left);
+            return right - 1;
+        }
+        return 1 + max(left, right);
+    }
+    int amountOfTime(TreeNode* root, int start) {
+        int timer = 0;
+        burn(root, start, timer);
+        TreeNode* burnNode = NULL;
+        findNode(root, burnNode,start);
+        int h = height(burnNode)-1;
+        return max(h, timer);
+        }
 
-    void findParents(TreeNode* root,unordered_map<TreeNode*,TreeNode*>& parent)
-    {   queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty())   
-            {   auto a=q.front();
-                q.pop();
-                if(a->left)
-            {
-                parent[a->left]=a;
-                q.push(a->left);
-            }
-            if(a->right)
-            {
-                parent[a->right]=a;
-                q.push(a->right);
-            }
-            }
-    }
+
+        
+    
+
+    // void findParents(TreeNode* root,unordered_map<TreeNode*,TreeNode*>& parent)
+    // {   queue<TreeNode*>q;
+    //     q.push(root);
+    //     while(!q.empty())   
+    //         {   auto a=q.front();
+    //             q.pop();
+    //             if(a->left)
+    //         {
+    //             parent[a->left]=a;
+    //             q.push(a->left);
+    //         }
+    //         if(a->right)
+    //         {
+    //             parent[a->right]=a;
+    //             q.push(a->right);
+    //         }
+    //         }
+    // }
 
 };
