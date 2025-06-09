@@ -19,20 +19,20 @@ public:
         {
             inMap[inorder[i]]=i;
         }
-        int poEnd=n-1;
-        return binaryTree(postorder,poEnd,inorder,0,n-1,inMap);
+
+        return binaryTree(postorder,0,n-1,inorder,0,n-1,inMap);
     }
 
-    TreeNode* binaryTree(vector<int>& postOrder,int& poEnd, vector<int>& inorder, int inStart,int inEnd,unordered_map<int,int>& inMap)
+    TreeNode* binaryTree(vector<int>& postOrder,int poStart,int poEnd, vector<int>& inorder, int inStart,int inEnd,unordered_map<int,int>& inMap)
     {   
-        if( inStart>inEnd) return NULL;
+        if(poEnd<poStart || inStart>inEnd) return NULL;
         TreeNode* root=new TreeNode(postOrder[poEnd]);
 
         int inRoot=inMap[postOrder[poEnd]];
-        poEnd--;
+        int leftTree=inRoot-inStart;
         
-        root->right=binaryTree(postOrder,poEnd,inorder,inRoot+1,inEnd,inMap);
-        root->left=binaryTree(postOrder,poEnd,inorder,inStart,inRoot-1,inMap);
+        root->left=binaryTree(postOrder,poStart,poStart+leftTree-1,inorder,inStart,inRoot-1,inMap);
+        root->right=binaryTree(postOrder,poStart+leftTree,poEnd-1,inorder,inRoot+1,inEnd,inMap);
 
         return root;
     }
