@@ -22,9 +22,7 @@ public:
             if(curr==NULL){ s.append("#,");}
             else{
                s.append(to_string(curr->val)+',');
-            }
-            if(curr!=NULL)
-            {
+            
                 q.push(curr->left);
                 q.push(curr->right);
             }
