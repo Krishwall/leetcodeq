@@ -18,20 +18,20 @@ public:
         for(int i=0;i<n;++i){
             inMap[inorder[i]]=i;
         }
-        int preStart=0;
-        root=buildTree(inorder,0,n-1,preorder,preStart,inMap);
+
+        root=buildTree(inorder,0,n-1,preorder,0,n-1,inMap);
         return root;
     }
-    TreeNode*  buildTree(vector<int>& inorder,int inStart,int inEnd,vector<int>& preorder, int& preStart,map<int,int>& inMap){
+    TreeNode*  buildTree(vector<int>& inorder,int inStart,int inEnd,vector<int>& preorder, int preStart,int preEnd,map<int,int>& inMap){
         
-        if(preStart==preorder.size()|| inStart>inEnd)  return NULL;
+        if(preStart>preEnd || inStart>inEnd)  return NULL;
         TreeNode* root=new TreeNode(preorder[preStart]);
 
         int inRoot=inMap[root->val];
-        preStart++;
+        int lefttree=inRoot-inStart;
 
-        root->left=buildTree(inorder,inStart,inRoot-1,preorder,preStart,inMap);
-        root->right=buildTree(inorder,inRoot+1,inEnd,preorder,preStart,inMap);
+        root->left=buildTree(inorder,inStart,inRoot-1,preorder,preStart+1,preStart+lefttree,inMap);
+        root->right=buildTree(inorder,inRoot+1,inEnd,preorder,preStart+lefttree+1,preEnd,inMap);
 
         return root;;
     }
