@@ -12,31 +12,30 @@
 class Solution {
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        if(preorder.size()==0)
+        int n=preorder.size();
+        if(n==0)
             return NULL;
-        TreeNode* root=new TreeNode(preorder[0]);
-        for(int i=0;i<preorder.size();++i)
-        bst(root,preorder[i]);
-        return root;
+
+        vector<int> inorder=preorder;
+        sort(inorder.begin(),inorder.end());
+        unordered_map<int,int> inMap;
+        for(int i=0;i<n;++i)
+        {
+            inMap[inorder[i]]=i;
+        }
+        return constructBST(preorder,0,n-1,inorder,0,n-1,inMap);
 
     }
-    void bst( TreeNode* root,int val)
+    TreeNode* constructBST(vector<int> &preorder,int pres,int pree,vector<int> inorder,int inStart,int inend,unordered_map<int,int> inMap)
 
     {
         
-        
-
-        if(val <root->val)
-          { if( root->left==NULL) {root->left =new TreeNode(val);return;}
-           else bst(root->left,val);
-        
-        }
-        if(val >root->val)
-          { if( root->right==NULL) {root->right =new TreeNode(val);return;}
-            else bst(root->right,val);
-        
-        }
-
-        
+        if(pres>pree || inStart>inend) return NULL;
+        TreeNode* root=new TreeNode(preorder[pres]);
+        int inRoot=inMap[preorder[pres]];
+        int leftRoot=inRoot-inStart;
+        root->left=constructBST(preorder,pres+1,pres+leftRoot,inorder,inStart,inRoot-1,inMap);
+        root->right=constructBST(preorder,pres+leftRoot+1,pree,inorder,inRoot+1,inend,inMap);
+        return root;
     }
 };
