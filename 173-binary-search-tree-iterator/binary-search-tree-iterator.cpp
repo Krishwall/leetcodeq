@@ -17,7 +17,7 @@ public:
     }
     
     int next() {
-        auto temp=st.top();
+        TreeNode* temp=st.top();
         st.pop();
         if(temp->right)
         pushAll(temp->right);
