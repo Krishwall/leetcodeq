@@ -40,7 +40,7 @@ int b=before();
         
     }
     
-    bool hasNext(stack<TreeNode*> st) {
+    bool hasNext(stack<TreeNode*>& st) {
         return (!st.empty());
         
     }
