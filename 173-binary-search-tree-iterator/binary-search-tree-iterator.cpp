@@ -19,6 +19,7 @@ public:
     int next() {
         auto temp=st.top();
         st.pop();
+        if(temp->right)
         pushAll(temp->right);
         return temp->val;
         
