@@ -31,7 +31,7 @@ public:
             else if(nums[mid]<target) low=mid+1;
             else high=mid-1;
         }
-        if(last==-1) return {-1,-1};
+        
         return {first,last};
 
         
