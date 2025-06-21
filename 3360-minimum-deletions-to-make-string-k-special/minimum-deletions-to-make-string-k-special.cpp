@@ -1,29 +1,29 @@
 class Solution {
 public:
     int minimumDeletions(string word, int k) {
-        unordered_map<char,int> freq;
+        vector<int> freq(26,0);
 
-        for(auto&ch : word)
-        freq[ch]++;
-
-        int res=word.length();
-
-        for(auto &pair : freq)
+        for(auto &a:word)
         {
-         int deleted=0;
-            for(auto &pair2:freq)
-            {
-                if(pair.second>pair2.second)
-                    {deleted+=pair2.second;}
-
-                else if(pair2.second-pair.second>k)
-                    deleted+=pair2.second-(pair.second+k);
-            }
-            res=min(res,deleted);
+            freq[a-'a']++;
         }
+        int deleted=0;
+       
+        sort(freq.begin(),freq.end());
+        int ans=word.length();
+        for (int i=0;i<26;++i)
+        {
+            int result =deleted;int minFreq=freq[i];
 
-
-        return res;
+            for(int j=25;j>i;--j)
+            {
+                if(freq[j]-minFreq<=k) break;
+                result+=freq[j]-(minFreq+k);
+            }
+            ans=min(ans,result);
+            deleted+=freq[i];
+        }
+        return ans;
     }
 };
 
