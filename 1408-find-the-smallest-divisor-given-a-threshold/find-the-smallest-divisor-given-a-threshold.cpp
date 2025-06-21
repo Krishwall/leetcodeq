@@ -15,7 +15,7 @@ public:
 
             // if(sum==threshold) return mid;
             if(sum<=threshold)
-                {ans=min(mid,ans);
+                {ans=mid;
                     high=mid-1;}
             else
                 low=mid+1;
