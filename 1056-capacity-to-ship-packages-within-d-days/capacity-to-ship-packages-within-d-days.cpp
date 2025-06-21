@@ -15,7 +15,7 @@ public:
         }
         return low;
     }
-    int findDays(vector<int>& weights , int cap)
+    int findDays(vector<int>& weights , int& cap)
     {
         int days=1,load=0;
 
