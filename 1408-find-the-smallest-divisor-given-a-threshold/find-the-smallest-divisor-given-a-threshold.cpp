@@ -1,7 +1,7 @@
 class Solution {
 public:
     int smallestDivisor(vector<int>& nums, int threshold) {
-        
+        int n=nums.size();
         int high = *max_element(nums.begin(),nums.end());
         cout<<high;
         int low=1;
@@ -10,7 +10,7 @@ public:
         while(low<=high){
             sum=0;
             int mid=(low+high)/2;
-            for(int i=0;i<nums.size();++i)
+            for(int i=0;i<n;++i)
             sum+= ceil(double(nums[i])/mid);
 
             // if(sum==threshold) return mid;
