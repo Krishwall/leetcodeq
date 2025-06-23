@@ -1,8 +1,10 @@
 class Solution {
 public:
     string reverseWords(string s) {
+        if(s=="")return s;
         int left=0,right=s.length()-1;
-         while (left <= right && s[left] == ' ') left++;
+        
+        while (left <= right && s[left] == ' ') left++;
         while (right >= left && s[right] == ' ') right--;
         string temp="",ans="";
         while(left<=right)
