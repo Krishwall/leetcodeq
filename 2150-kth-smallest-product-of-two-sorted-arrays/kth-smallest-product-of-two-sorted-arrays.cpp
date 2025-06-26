@@ -4,15 +4,68 @@ public:
         long long low=-1e10;
         long long high=1e10;
         int n1=nums1.size();
-        // int n2=nums2.size();
+        int n2=nums2.size();
+
+        int pos1=0,pos2=0;
+
+        while(pos1<n1 && nums1[pos1]<0) pos1++;
+        while(pos2<n2 && nums2[pos2]<0) pos2++;
+
         while(low<=high)
         {
             long long count =0;
             long long mid=(low+high)>>1;
 
-            for(int i=0;i<n1;++i)
+
+            for(int i1=0,i2=pos2-1;i1<pos1 && i2>=0;)
             {
-                count+=totalEle(nums2,nums1[i],mid); // finds total elements having product less than mid
+               if(1ll*nums1[i1]*nums2[i2]>mid)
+                {
+                    i1++;
+                }
+                else{
+                    count+=pos1-i1;
+                    i2--;
+                }
+            }
+
+
+            for(int i1=pos1,i2=n2-1;i1<n1 && i2>=pos2;)
+            {
+               if(1ll*nums1[i1]*nums2[i2]>mid)
+                {
+                    i2--;
+                }
+                else{
+                    count+=i2-pos2+1;
+                    i1++;
+                }
+            }
+
+
+            for(int i1=0,i2=pos2;i1<pos1 && i2<n2;)
+            {
+               if(1ll*nums1[i1]*nums2[i2]>mid)
+                {
+                    i2++;
+                }
+                else{
+                    count+=n2-i2;
+                    i1++;
+                }
+            }
+
+
+            for(int i1=pos1,i2=0;i1<n1 && i2<pos2;)
+            {
+               if(1ll*nums1[i1]*nums2[i2]>mid)
+                {
+                    i1++;
+                }
+                else{
+                    count+=n1-i1;
+                    i2++;
+                }
             }
             if(count<k) low=mid+1;
             else  high=mid-1;
@@ -22,23 +75,6 @@ public:
         return low;
     }
 
-    long long totalEle(vector<int>& nums2,int& e1,long long& prod) {
-        
-        int low=0;int high=nums2.size()-1;
-        int n2=high+1;
-        while(low<=high){
-            int mid=(high+low)>>1;
-
-            if((e1>=0 && 1ll*e1*nums2[mid]<=prod) || (e1<0 && 1ll*e1*nums2[mid]>prod))
-            {
-                low=mid+1;
-            }
-            else
-            {high=mid-1;}
-        }
-            if(e1>=0) return low;
-            else return n2-low;
-      
-    }
+    
 
 };
