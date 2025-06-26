@@ -4,7 +4,7 @@ public:
         long long low=-1e10;
         long long high=1e10;
         int n1=nums1.size();
-        int n2=nums2.size();
+        // int n2=nums2.size();
         while(low<=high)
         {
             long long count =0;
@@ -15,7 +15,7 @@ public:
                 count+=totalEle(nums2,nums1[i],mid); // finds total elements having product less than mid
             }
             if(count<k) low=mid+1;
-            else if(count>=k) high=mid-1;
+            else  high=mid-1;
             
         }
         
