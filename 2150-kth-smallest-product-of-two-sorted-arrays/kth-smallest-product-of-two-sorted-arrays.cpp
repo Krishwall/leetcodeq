@@ -22,14 +22,14 @@ public:
         return low;
     }
 
-    long long totalEle(vector<int>& nums2,long long e1,long long& prod) {
+    long long totalEle(vector<int>& nums2,int& e1,long long& prod) {
         
         int low=0;int high=nums2.size()-1;
         int n2=high+1;
         while(low<=high){
             int mid=(high+low)>>1;
 
-            if((e1>=0 && e1*nums2[mid]<=prod) || (e1<0 && e1*nums2[mid]>prod))
+            if((e1>=0 && 1ll*e1*nums2[mid]<=prod) || (e1<0 && 1ll*e1*nums2[mid]>prod))
             {
                 low=mid+1;
             }
