@@ -28,7 +28,7 @@ public:
                 return node;
             }
         }
-        delete fast;
+       
         
         return NULL;
     }
