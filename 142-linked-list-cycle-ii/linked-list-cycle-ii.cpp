@@ -24,9 +24,12 @@ public:
                     node=node->next;
                     fast=fast->next;
                 }
+                delete fast;
                 return node;
             }
         }
+        delete fast;
+        
         return NULL;
     }
 };
