@@ -4,7 +4,7 @@ public:
         int n=text1.length();
         int m=text2.length();
 
-        vector<vector<int>> dp(n+1,vector<int>(m+1,0));
+        // vector<vector<int>> dp(n+1,vector<int>(m+1,0));
         vector<int> prev(m+1,0),cur(m+1,0);
         
         for(int i=1;i<=n;++i)
