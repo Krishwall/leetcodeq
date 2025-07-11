@@ -9,11 +9,11 @@ public:
             for(int buy=0;buy<2;++buy)
             {
                 for(int cap=1;cap<=2;++cap)
-                { int profit=0;if(buy)
-                    profit=max(-prices[i]+ahead[0][cap],0+ahead[1][cap]);
+                { if(buy)
+                    cur[buy][cap]=max(-prices[i]+ahead[0][cap],0+ahead[1][cap]);
                     else
-                    profit=max(+prices[i]+ahead[1][cap-1],0+ahead[0][cap]);
-                cur[buy][cap]=profit;
+                    cur[buy][cap]=max(+prices[i]+ahead[1][cap-1],0+ahead[0][cap]);
+            
                 }
             }
             ahead=cur;
