@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> largestDivisibleSubset(vector<int>& nums) {
         sort(nums.begin(),nums.end());
-int n=nums.size();
+        int n=nums.size();
         vector<int> parent(n);
         vector<int> dp(n,0);
         int maxi=0;
@@ -13,6 +13,7 @@ int n=nums.size();
             {if(nums[i]%nums[prev_ele]==0 && dp[i]<dp[prev_ele]+1)
             {
                 dp[i]=dp[prev_ele]+1;
+                
                 parent[i]=prev_ele;
             }
             }
