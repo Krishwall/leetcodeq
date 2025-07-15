@@ -2,7 +2,7 @@ class Solution {
 public:
     int longestStrChain(vector<string>& words) {
         int n=words.size();
-        sort(words.begin(),words.end(),[](string a,string b){
+        sort(words.begin(),words.end(),[](string& a,string& b){
             return a.length()<b.length();});
         vector<int> dp(n,1);
         int maxi=1;
