@@ -5,7 +5,7 @@ public:
         vector<int> dp(n+1,0);
 
         for(int i=n-1;i>=0;--i)
-        {   string temp="";
+        {   
             int mini=INT_MAX; 
             for(int j=i;j<n;++j)
             {   
