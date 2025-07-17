@@ -9,7 +9,7 @@ public:
             if(a==',' || a=='(')
                 continue;
 
-            if(a=='&' || a=='|' || a=='t' || a=='f' || a=='!' )
+            if(a!=')' )
             st.push(a);
 
             else if(a==')')
