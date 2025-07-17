@@ -9,9 +9,9 @@ public:
             int mini=INT_MAX; 
             for(int j=i;j<n;++j)
             {   
-                temp+=s[j];
+                
 
-                if(ispallindrome(temp))
+                if(ispallindrome(i,j,s))
                 {
                     int part=1+dp[j+1];
                     mini=min(mini,part);
@@ -21,10 +21,9 @@ public:
         }
         return dp[0]-1;
     }
-    bool ispallindrome(string& s)
+    bool ispallindrome(int i,int j,string& s)
     {
-        int i=0;
-        int j=s.size()-1;
+        
 
         while(i<j)
         {
