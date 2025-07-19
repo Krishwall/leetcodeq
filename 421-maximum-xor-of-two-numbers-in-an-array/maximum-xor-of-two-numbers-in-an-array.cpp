@@ -1,70 +1,63 @@
 class Solution {
-    struct Node{
-        Node* links[2];
-        bool fl=false;
-    bool containsKey(int bit)
-    {
-        return (links[bit]!=NULL);
-    }
-    Node* get(int bit)
-    {
-        return links[bit];
-    }
-    void put(int bit,Node* node)
-    {
-        links[bit]=node;
-    }
-  
+    struct Node {
+        Node* links[2] = {nullptr, nullptr};
+
+        Node* get(int bit) { return links[bit]; }
+        bool containsKey(int bit) { return links[bit] != nullptr; }
+        void put(int bit, Node* node) { links[bit] = node; }
     };
 
-class Trie{
-    private:
-    Node* root;
-    public:
-    Trie()
-    {
-        root=new Node();   
-    }
+    class Trie {
+        Node* root;
+        int maxBits;
 
-    void insert(int num)
-    {
-        Node* node=root;
-     for(int i=31;i>=0;--i)
-     {
-        int bit=(num>>i) &1;
-        if(!node->containsKey(bit)){
-            node->put(bit,new Node());
+    public:
+        Trie(int bits) : maxBits(bits) {
+            root = new Node();
         }
-        node=node->get(bit);
-     }   
-    }
-public:
-    int getMax(int num){
-        Node* node=root;
-        int maxNum=0;
-        for(int i=31;i>=0;i--){
-            int bit=(num>>i)&1;
-            if(node->containsKey(1-bit)){
-                maxNum=maxNum |(1<<i);
-                node=node->get(1-bit);
-            }
-            else{
-                    node=node->get(bit);
+
+        void insert(int num) {
+            Node* node = root;
+            for (int i = maxBits - 1; i >= 0; --i) {
+                int bit = (num >> i) & 1;
+                if (!node->containsKey(bit)) {
+                    node->put(bit, new Node());
+                }
+                node = node->get(bit);
             }
         }
-        return maxNum;
-    }
-};
+
+        int getMax(int num) {
+            Node* node = root;
+            int maxNum = 0;
+            for (int i = maxBits - 1; i >= 0; --i) {
+                int bit = (num >> i) & 1;
+                if (node->containsKey(1 - bit)) {
+                    maxNum |= (1 << i);
+                    node = node->get(1 - bit);
+                } else {
+                    node = node->get(bit);
+                }
+            }
+            return maxNum;
+        }
+    };
+
 public:
     int findMaximumXOR(vector<int>& nums) {
-        Trie trie;
-        for(auto &it:nums)
-        trie.insert(it);
-        int maxi=0; 
-        for(auto &it:nums)
-        {
-            maxi=max(maxi,trie.getMax(it));
-        }
-        return maxi;
+        int maxVal = *max_element(nums.begin(), nums.end());
+        int bitLength = 0;
+        while (bitLength<31 && (1 << bitLength) <= maxVal) ++bitLength;
+
+        Trie trie(bitLength);
+
+        for (int num : nums)
+            trie.insert(num);
+
+        int maxXor = 0;
+        for (int num : nums)
+            maxXor = max(maxXor, trie.getMax(num));
+
+        return maxXor;
     }
 };
