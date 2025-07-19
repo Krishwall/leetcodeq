@@ -1,63 +1,22 @@
 class Solution {
-    struct Node {
-        Node* links[2] = {nullptr, nullptr};
-
-        Node* get(int bit) { return links[bit]; }
-        bool containsKey(int bit) { return links[bit] != nullptr; }
-        void put(int bit, Node* node) { links[bit] = node; }
-    };
-
-    class Trie {
-        Node* root;
-        int maxBits;
-
-    public:
-        Trie(int bits) : maxBits(bits) {
-            root = new Node();
-        }
-
-        void insert(int num) {
-            Node* node = root;
-            for (int i = maxBits - 1; i >= 0; --i) {
-                int bit = (num >> i) & 1;
-                if (!node->containsKey(bit)) {
-                    node->put(bit, new Node());
-                }
-                node = node->get(bit);
-            }
-        }
-
-        int getMax(int num) {
-            Node* node = root;
-            int maxNum = 0;
-            for (int i = maxBits - 1; i >= 0; --i) {
-                int bit = (num >> i) & 1;
-                if (node->containsKey(1 - bit)) {
-                    maxNum |= (1 << i);
-                    node = node->get(1 - bit);
-                } else {
-                    node = node->get(bit);
-                }
-            }
-            return maxNum;
-        }
-    };
-
 public:
     int findMaximumXOR(vector<int>& nums) {
-        int maxVal = *max_element(nums.begin(), nums.end());
-        int bitLength = 0;
-        while (bitLength<31 && (1 << bitLength) <= maxVal) ++bitLength;
+        int maxXOR = 0, mask = 0;
+        for (int i = 31; i >= 0; --i) {
+            mask |= (1 << i);
+            unordered_set<int> prefixes;
+            for (int num : nums) {
+                prefixes.insert(num & mask);
+            }
 
-        Trie trie(bitLength);
-
-        for (int num : nums)
-            trie.insert(num);
-
-        int maxXor = 0;
-        for (int num : nums)
-            maxXor = max(maxXor, trie.getMax(num));
-
-        return maxXor;
+            int candidate = maxXOR | (1 << i);
+            for (int prefix : prefixes) {
+                if (prefixes.count(candidate ^ prefix)) {
+                    maxXOR = candidate;
+                    break;
+                }
+            }
+        }
+        return maxXOR;
     }
 };
