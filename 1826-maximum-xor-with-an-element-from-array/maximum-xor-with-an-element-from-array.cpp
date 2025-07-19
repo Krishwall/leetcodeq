@@ -12,11 +12,11 @@ class Solution {
         int maxBits;
 
     public:
-        Trie(int bits) : maxBits(bits) {
+        Trie(int& bits) : maxBits(bits) {
             root = new Node();
         }
 
-        void insert(int num) {
+        void insert(int& num) {
             Node* node = root;
             for (int i = maxBits - 1; i >= 0; --i) {
                 int bit = (num >> i) & 1;
@@ -27,7 +27,7 @@ class Solution {
             }
         }
 
-        int getMax(int num) {
+        int getMax(int& num) {
             Node* node = root;
             int maxNum = 0;
             for (int i = maxBits - 1; i >= 0; --i) {
@@ -57,7 +57,7 @@ public:
          while (bitLength<31 && (1 << bitLength) <= maxVal) ++bitLength;
 
         sort(nums.begin(),nums.end());
-        sort(queries.begin(),queries.end(),[](vector<int> query1,vector<int> query2){
+        sort(queries.begin(),queries.end(),[](vector<int>& query1,vector<int>& query2){
             return query1[1]<query2[1];
         });
         
