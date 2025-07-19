@@ -57,7 +57,7 @@ public:
          while (bitLength<31 && (1 << bitLength) <= maxVal) ++bitLength;
 
         sort(nums.begin(),nums.end());
-        sort(queries.begin(),queries.end(),[](vector<int>& query1,vector<int>& query2){
+        sort(queries.begin(),queries.end(),[](vector<int> query1,vector<int> query2){
             return query1[1]<query2[1];
         });
         
