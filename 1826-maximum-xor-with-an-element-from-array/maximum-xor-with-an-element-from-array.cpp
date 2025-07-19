@@ -69,11 +69,11 @@ public:
             
             
             
-            bool fl=false;
+            
             
             while(j<nums.size() && nums[j]<=queries[i][1])
             {    
-                trie.insert(nums[j]);fl=true;++j;
+                trie.insert(nums[j]);++j;
                 
             }
             
