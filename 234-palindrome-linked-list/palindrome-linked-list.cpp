@@ -36,7 +36,7 @@ public:
         return true;
     }
 
-    ListNode* reverse(ListNode* head)
+    inline ListNode* reverse(ListNode* head)
     {
         if(head==NULL || head->next==NULL) return head;
         ListNode* newHead=reverse(head->next);
