@@ -1,6 +1,6 @@
 class Solution {
 private:
-    void dfs(int row,int col,vector<vector<int>>& vis,vector<vector<int>>& grid, int drow[],int dcol[],int& n,int& m)
+    void dfs(int row,int col,vector<vector<int>>& vis,vector<vector<int>>& grid, int (&drow)[],int (&dcol)[],int& n,int& m)
     {   
         vis[row][col]=1;
         for(int i=0;i<4;++i)
