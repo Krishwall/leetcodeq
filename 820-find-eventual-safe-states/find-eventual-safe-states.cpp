@@ -8,15 +8,10 @@ public:
         for(int i=0;i<n;++i)
         {   
             for(auto it:graph[i])
-            revadj[it].push_back(i);
+            {revadj[it].push_back(i);indegree[i]++;}
         }
 
-        for(int i=0;i<n;i++){
-            for(auto it:revadj[i])
-            {
-                indegree[it]++;
-            }
-        }
+        
         queue<int> q;
         for(int i=0;i<n;i++){
             if(indegree[i]==0){
