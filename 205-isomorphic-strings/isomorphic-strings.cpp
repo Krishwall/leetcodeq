@@ -1,24 +1,24 @@
 class Solution {
 public:
-    bool isIsomorphic(string s, string t) {
-        if(s.length() != t.length()) return false;
+    bool isIsomorphic(const string &s, const string &t)
+    {
+        char map_s2t[128] = {0};
+        char map_t2s[128] = {0};
 
-        unordered_map<char, char> st_map, ts_map;
+        for (int i = 0; i < s.size(); i++) {
+            const char item_s2t = s[i];
+            const char item_t2s = t[i];
 
-        for(int i = 0; i < s.length(); ++i) {
-            char sc = s[i];
-            char tc = t[i];
+            if (!map_s2t[item_s2t])
+                map_s2t[item_s2t] = item_t2s;
 
-            if(st_map.count(sc) && st_map[sc] != tc)
+            if (!map_t2s[item_t2s])
+                map_t2s[item_t2s] = item_s2t;
+
+            if (map_s2t[item_s2t] != item_t2s || map_t2s[item_t2s] != item_s2t)
                 return false;
-
-            if(ts_map.count(tc) && ts_map[tc] != sc)
-                return false;
-
-            st_map[sc] = tc;
-            ts_map[tc] = sc;
-        }
-
+        }    
+    
         return true;
     }
 };
