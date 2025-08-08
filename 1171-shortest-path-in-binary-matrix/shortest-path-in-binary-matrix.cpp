@@ -4,8 +4,8 @@ public:
         int n = grid.size();
         if (grid[0][0] || grid[n-1][n-1]) return -1;
 
-        int drow[] = {-1,-1,-1,0,0,1,1,1};
-        int dcol[] = {-1,0,1,-1,1,-1,0,1};
+        vector<int> drow = {-1,-1,-1,0,0,1,1,1};
+        vector<int> dcol = {-1,0,1,-1,1,-1,0,1};
 
         queue<pair<int,int>> q;
         vector<vector<int>> dist(n, vector<int>(n, INT_MAX));
