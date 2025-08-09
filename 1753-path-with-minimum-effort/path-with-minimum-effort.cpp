@@ -18,7 +18,7 @@ public:
             pq.pop();
 
             if(r==n-1 && c==m-1 ) return diff;
-            if(diff>effort[r][c]) continue;
+            // if(diff>effort[r][c]) continue;
             for(int i=0;i<4;++i)
             {
                 int nrow=r+drow[i];
