@@ -5,17 +5,16 @@ public:
         int m=heights[0].size();
         vector<vector<int>> effort(n,vector<int>(m,INT_MAX));
 
-        priority_queue<vector<int>,vector<vector<int>>, greater<>> pq;
+        using T = tuple<int,int,int>; // effort, row, col
+        priority_queue<T, vector<T>, greater<T>> pq;
+
         effort[0][0]=0;
         pq.push({0,0,0});
         int drow[]={-1,0,1,0};
         int dcol[]={0,1,0,-1};
         while(!pq.empty())
         {
-            auto it=pq.top();
-            int diff=it[0];
-            int r=it[1];
-            int c=it[2];
+           auto [diff, r, c] = pq.top();
             pq.pop();
 
             if(r==n-1 && c==m-1 ) return diff;
