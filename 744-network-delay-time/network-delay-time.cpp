@@ -15,7 +15,7 @@ public:
         q.push({0,k-1});
         while(!q.empty())
         {
-            auto [cost,node]=q.top();
+            auto  [cost,node]=q.top();
             q.pop();
             if (cost > dist[node]) continue;
 
