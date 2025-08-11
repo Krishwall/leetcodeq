@@ -11,11 +11,11 @@ public:
 
         dist[k-1]=0;
 
-        queue<pair<int,int>> q;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> q;
         q.push({0,k-1});
         while(!q.empty())
         {
-            auto [cost,node]=q.front();
+            auto [cost,node]=q.top();
             q.pop();
 
 
