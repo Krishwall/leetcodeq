@@ -4,7 +4,7 @@ public:
         
         vector<vector<pair<int,int>>> adjl(n);
         vector<int> dist(n,INT_MAX);
-        for(auto it: times)
+        for(auto& it: times)
         {
             adjl[it[0]-1].push_back({it[1]-1,it[2]});
         }
