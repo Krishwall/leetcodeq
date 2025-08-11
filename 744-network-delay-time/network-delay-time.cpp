@@ -17,7 +17,7 @@ public:
         {
             auto [cost,node]=q.top();
             q.pop();
-
+            if (cost > dist[node]) continue;
 
             for(auto it:adjl[node])
             {
