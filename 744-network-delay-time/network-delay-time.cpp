@@ -19,7 +19,7 @@ public:
             q.pop();
             if (cost > dist[node]) continue;
 
-            for(auto it:adjl[node])
+            for(auto& it:adjl[node])
             {
                 int adjNode=it.first;
                 int edW=it.second;
