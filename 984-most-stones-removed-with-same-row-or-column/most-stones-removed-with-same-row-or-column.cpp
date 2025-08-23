@@ -39,7 +39,7 @@ public:
         int maxRow=0;
         int maxCol=0;
         int n=stones.size();
-        for(auto it: stones)
+        for(auto& it: stones)
         {
             maxRow=max(maxRow,it[0]);
             maxCol=max(maxCol,it[1]);
@@ -48,7 +48,7 @@ public:
 
         DisjointSet ds(maxRow+maxCol+1);
         unordered_map<int,int> stoneNodes;
-        for(auto it:stones)
+        for(auto& it:stones)
         {
             int nodeRow=it[0];
             int nodeCol=it[1]+maxRow+1;
@@ -58,7 +58,7 @@ public:
         }
 
         int cnt=0;
-        for(auto it: stoneNodes){
+        for(auto& it: stoneNodes){
             if(ds.findUPar(it.first)==it.first)
                 cnt++;
         }
