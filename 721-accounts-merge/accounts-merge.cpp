@@ -52,7 +52,8 @@ public:
                     ds.unionByRank(i,mapMailNode[mail]);
                 }
             }
-        }
+        }    
+        
         vector<string> mergedMail[n];
         for(auto it: mapMailNode){
             string mail=it.first;
