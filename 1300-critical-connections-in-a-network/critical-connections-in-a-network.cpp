@@ -26,7 +26,7 @@ int timer =0;
             }
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
         vector<vector<int>> adj(n);
-        for(auto it:connections)
+        for(auto& it:connections)
         {
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
