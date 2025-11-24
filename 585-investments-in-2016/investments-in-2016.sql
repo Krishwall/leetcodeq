@@ -1,12 +1,15 @@
 SELECT 
-    ROUND(SUM(tiv_2016), 2) AS tiv_2016
-FROM (
-    SELECT 
-        tiv_2016,
-        COUNT(*) OVER (PARTITION BY lat, lon)    AS loc_cnt,
-        COUNT(*) OVER (PARTITION BY tiv_2015)    AS tiv2015_cnt
+    ROUND(SUM(i.tiv_2016), 2) AS tiv_2016
+FROM Insurance i
+JOIN (
+    SELECT lat, lon
     FROM Insurance
-) AS t
-WHERE 
-    loc_cnt = 1
-    AND tiv2015_cnt > 1;
+    GROUP BY lat, lon
+    HAVING COUNT(*) = 1
+) u ON i.lat = u.lat AND i.lon = u.lon
+JOIN (
+    SELECT tiv_2015
+    FROM Insurance
+    GROUP BY tiv_2015
+    HAVING COUNT(*) > 1
+) t ON i.tiv_2015 = t.tiv_2015;
