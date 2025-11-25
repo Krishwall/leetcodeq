@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int smallestRepunitDivByK(int k) {
+    int smallestRepunitDivByK(int& k) {
         
         if(k&1==0) return -1;
         if(k%5==0) return -1;
