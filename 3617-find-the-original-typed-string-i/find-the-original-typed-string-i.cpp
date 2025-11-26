@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int possibleStringCount(string word) {
+    int possibleStringCount(string& word) {
        
    int k=1;
         for(int i=1;i<word.length();i++)
