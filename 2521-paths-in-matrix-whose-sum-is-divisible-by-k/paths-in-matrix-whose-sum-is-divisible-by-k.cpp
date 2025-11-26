@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int numberOfPaths(vector<vector<int>>& grid, int k) {
+    int numberOfPaths(vector<vector<int>>& grid, int& k) {
         int n = grid.size();
         int m = grid[0].size();
         const int MOD =1e9+7;
