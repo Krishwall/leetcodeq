@@ -1,6 +1,6 @@
 class Solution {
 public:
-    long long maxSubarraySum(vector<int>& nums, int k) {
+    long long maxSubarraySum(vector<int>& nums, int& k) {
 
         int n=nums.size();
         long long prefixSum=0,maxSum=LONG_LONG_MIN;
