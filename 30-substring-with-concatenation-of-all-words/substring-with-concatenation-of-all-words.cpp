@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> findSubstring(string s, vector<string>& words) {
+    vector<int> findSubstring(string& s, vector<string>& words) {
         vector<int> ans;
         int wordLength=words[0].length();
         int wordCount=words.size();
