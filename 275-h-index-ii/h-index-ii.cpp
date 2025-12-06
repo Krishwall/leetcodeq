@@ -5,7 +5,7 @@ public:
 
         int low=0,high=n;
         int mid=0;
-        int maxi=0;
+        
         while(low<high)
         {   mid=(low+high)/2;
             if( n-mid<=citations[mid])
