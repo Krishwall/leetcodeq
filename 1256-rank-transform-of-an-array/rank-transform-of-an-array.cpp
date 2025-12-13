@@ -6,7 +6,7 @@ public:
         unordered_map<int,int> hash;
         sort(arr.begin(),arr.end());
         int k=1;
-        for (auto num : arr)
+        for (auto& num : arr)
         {
             if(hash.find(num)==hash.end())
             {
@@ -14,11 +14,11 @@ public:
                 k++;
             }
         }
-        vector<int> ans;
-        for (auto a:sortedarr)
+        arr.clear();
+        for (auto& a:sortedarr)
         {
-            ans.push_back(hash[a]);
+            arr.push_back(hash[a]);
         }
-        return ans;
+        return arr;
     }
 };
