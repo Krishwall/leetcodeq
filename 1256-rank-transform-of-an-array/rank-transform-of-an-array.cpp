@@ -14,11 +14,11 @@ public:
                 k++;
             }
         }
-        arr.clear();
+        vector<int> ans;
         for (auto& a:sortedarr)
         {
-            arr.push_back(hash[a]);
+            ans.push_back(hash[a]);
         }
-        return arr;
+        return ans;
     }
 };
