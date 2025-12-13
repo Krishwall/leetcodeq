@@ -1,42 +1,46 @@
 class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
-        
-        int freq[26]={0};
-
-        for(auto &a:tasks)
-        {
-            freq[a-'A']++;
-
+        vector<int> freq(26,0);
+        int maxi=0;
+        for(char ch:tasks){
+            freq[ch-'A']++;
+            maxi=max(maxi,freq[ch-'A']);
         }
-                                
-        priority_queue<int> pq;
-        for(int i=0;i<26;i++){
-            if(freq[i]>0)
-            pq.push(freq[i]);
-        }
-        int time=0;
-
-        while(!pq.empty()){
-            int cycle=n+1;
-            vector<int> store;
-            int taskCount=0;
-            while(cycle-- && !pq.empty()){
-                if(pq.top()>1)
-                {
-                    store.push_back(pq.top()-1);
-                }
-                pq.pop();
-                taskCount++;
+        int time=(maxi-1)*(n+1);
+        for(int i:freq){
+            if(i==maxi){
+                time++;
             }
-            for(int &x:store)
-            pq.push(x);
-
-            time+=(pq.empty()?taskCount:n+1);
         }
-
-        return time;
-
-
+        return max(time,(int)tasks.size());
     }
 };
+
+// Visual intuition
+
+// Example:
+
+// tasks = [A,A,A,B,B,B], n = 2
+
+
+// maxi = 3  
+
+// Two tasks have max frequency
+
+// Skeleton:
+
+// A _ _  A _ _         (maxi-1)*(n+1)
+
+
+// Fill with B:
+
+// A B _  A B _
+
+
+// Final row:
+
+// A B
+
+
+// Total = 8
