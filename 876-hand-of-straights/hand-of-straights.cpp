@@ -4,28 +4,36 @@ public:
         int n=hand.size();
         if(n%k!=0) return false;
 
-        map<int,int> freq;
+       unordered_map<int,int> mp;
 
         for(auto &a:hand)
         {
-            freq[a]++;
+            mp[a]++;
 
 
         }
-        auto it=freq.begin();
-        while(it!=freq.end())
-        {if(it->second==0)
-        {it++;continue;}
-        int start=it->first;
-        int count=it->second;
-        for(int i=0;i<k;i++)
-        {
-            if(freq[i+start]<count) return false;
-            freq[start+i]-=count;
-        }
-        ++it;
+        priority_queue<int,vector<int>,greater<int>>pq;
+
+        for(auto p:mp)
+        pq.push(p.first);
+
+        while(!pq.empty()){
+            int top=pq.top();
+
+            if(mp[top]==0){
+                pq.pop();
+            }
+            else{
+                mp[top]--;
+                for(int i=0;i<k-1;i++)
+                {
+                    top++;
+                    if(mp[top]<=0)
+                        return false;
+                    mp[top]--;
+                }
+            }
         }
         return true;
-
     }
 };
