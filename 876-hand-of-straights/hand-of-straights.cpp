@@ -14,7 +14,7 @@ public:
         }
         priority_queue<int,vector<int>,greater<int>>pq;
 
-        for(auto p:mp)
+        for(auto& p:mp)
         pq.push(p.first);
 
         while(!pq.empty()){
