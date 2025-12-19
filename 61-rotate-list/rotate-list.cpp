@@ -1,5 +1,5 @@
 /**
- * Definition for singly-linked list->
+ * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
  *     ListNode *next;
@@ -11,31 +11,23 @@
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-
-        if (!head)
-            return nullptr;
-        if (k==0)
-            return head;
-        auto endElement=head;
-        int length=1;
-        while (endElement->next){
-            endElement=endElement->next;
-            length+=1;
+        if (!head || !head->next || k == 0) return head;
+        int n=1;
+        auto temp=head;
+        while(temp->next!=NULL){
+            temp=temp->next;
+            n++;
         }
-
-        if (length<2 or k%length==0)
-            return head;
-        endElement->next=head;
-
-        k%=length;
-        auto tempNode=head;
-
-        for(auto i=0;i<length-k-1;++i){
-            tempNode=tempNode->next;
+        temp->next=head;
+        k=k%n;
+        int kl=0;temp=head;
+        while(n-k-1>kl)
+        {
+            temp=temp->next;
+            kl++;
         }
-        auto shiftk=tempNode->next;
-        tempNode->next=nullptr;
-        
-        return shiftk;
+        head=temp->next;
+        temp->next=NULL;
+        return head;
     }
 };
