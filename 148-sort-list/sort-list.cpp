@@ -16,7 +16,7 @@ public:
         ListNode* middle=findMiddle(head);
         ListNode* right=middle->next;
         middle->next=NULL;
-        auto left=head;
+        ListNode* left=head;
 
         left=sortList(left);
         right=sortList(right);
