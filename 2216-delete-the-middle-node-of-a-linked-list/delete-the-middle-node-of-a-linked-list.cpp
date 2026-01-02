@@ -24,8 +24,9 @@ public:
                 slow=slow->next;
                 fast=fast->next->next;
         }
+        auto midd=slow->next;
         slow->next=slow->next->next;
-        
+        delete midd;
         return head;
     }
 };
