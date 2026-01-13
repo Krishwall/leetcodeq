@@ -10,9 +10,8 @@ public:
         for(int i=0;i<n;i++)
         {
             prefixSum+=nums[i];
-            int rem=prefixSum%k;
-            if(rem<0)
-            rem+=k;
+            int rem=(prefixSum%k +k)%k;
+            
             
             
             if(remCount.find(rem)!=remCount.end())
