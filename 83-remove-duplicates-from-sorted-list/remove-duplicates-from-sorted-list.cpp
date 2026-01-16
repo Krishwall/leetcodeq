@@ -1,5 +1,5 @@
 /**
- * Definition for singly-linked list->
+ * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
  *     ListNode *next;
@@ -11,19 +11,19 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
+        
 
         if (!head){
             return head;
         }
 
-        auto p=head;
-        while (p->next){
-            if (p->val==p->next->val)
-                p->next=p->next->next;
+        auto curr=head;
+        while (curr->next){
+            if (curr->val==curr->next->val)
+                curr->next=curr->next->next;
             else
-                p=p->next;
+                curr=curr->next;
         }
         return head;
-        
     }
 };
