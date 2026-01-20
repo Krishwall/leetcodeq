@@ -9,18 +9,19 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        auto x=head;
         if(!head || !head->next) return false;
-        auto y=head->next;
+        auto x=head;
+        auto y=head;
 
-        while(x!=y && x!=NULL && y!=NULL && y->next!=NULL)
+        while(y!=NULL && y->next!=NULL)
         {
             x=x->next;
             y=y->next->next;
+
+            if(x==y)return true;
         }
 
-        if(y==NULL || x==NULL || y->next==NULL)
         return false;
-        return true;
+        
     }
 };
