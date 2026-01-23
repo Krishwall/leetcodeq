@@ -18,14 +18,13 @@ public:
             }
 
         }
-        if(st.empty())
-            return count;
+        
         while(!st.empty())
         {
             count++;
             st.pop();
         }
         return count;
-        
+
     }
 };
