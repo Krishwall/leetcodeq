@@ -30,7 +30,7 @@ public:
             graph[original[j]-'a'][changed[j]-'a']=min(cost[j], graph[original[j]-'a'][changed[j]-'a']);
 
         }
-        int n=original.size();
+
         floydwarshall(graph,26);
         long long mincost=0;
         for(int i=0;i<source.size();i++)
