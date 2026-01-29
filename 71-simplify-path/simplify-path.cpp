@@ -4,7 +4,7 @@ public:
         stack<string> st;
         string token;
         
-        for (int i = 0; i <= path.size(); i++) {
+        for (int i= 0; i<= path.size();i++) {
             if (i == path.size() || path[i] == '/') {
                 if (token == "..") {
                     if (!st.empty()) st.pop();
