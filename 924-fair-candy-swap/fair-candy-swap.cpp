@@ -12,7 +12,7 @@ public:
 
         for (int j = 0, n = bobSizes.size(); j < n; j++)
             if (targets.find(bobSizes[j])!=targets.end())
-        return vector<int> {(aliceTotal+2*bobSizes[j]-bobTotal)/2,bobSizes[j]};
+        return {(aliceTotal+2*bobSizes[j]-bobTotal)/2,bobSizes[j]};
     return {0};
     }
 };
