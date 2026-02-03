@@ -18,12 +18,10 @@ public:
                     busy.pop();
             }
 
-            if(currPass>capacity)
-                return false;
-            else{
+            
                 busy.push({trips[i][2],trips[i][1],trips[i][0]});
                 currPass+=trips[i][0];
-            }
+            
         if(currPass>capacity) return false;
         }
         return true;
