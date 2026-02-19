@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int countBinarySubstrings(string s) {
+    int countBinarySubstrings(string& s) {
         vector<int> freq;
         int count=1;
         for(int i=1;i<s.size();i++){
