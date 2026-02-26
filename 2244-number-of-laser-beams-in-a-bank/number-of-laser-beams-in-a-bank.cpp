@@ -8,8 +8,8 @@ public:
         for(int i=0;i<bank.size();i++)
         {
             int count=0;
-            for (int j=0;j<bank[0].size();j++)
-            {   if(bank[i][j]=='1')
+            for (auto& a:bank[i])
+            {   if(a=='1')
                 count++;
             }
             if(count)
