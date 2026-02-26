@@ -3,6 +3,8 @@ public:
     int numberOfBeams(vector<string>& bank) {
         
         vector<int> allrows;
+        int prevCount=0;
+        int ans=0;
         for(int i=0;i<bank.size();i++)
         {
             int count=0;
@@ -11,12 +13,14 @@ public:
                 count++;
             }
             if(count)
-            allrows.push_back(count);
+            {
+                ans+=count*prevCount;
+                prevCount=count;
+            }
+            
 
         }
-        int ans=0;
-        for(int i=1;i<allrows.size();i++)
-        ans+=allrows[i]*allrows[i-1];
+        
 
         return ans;
     }
