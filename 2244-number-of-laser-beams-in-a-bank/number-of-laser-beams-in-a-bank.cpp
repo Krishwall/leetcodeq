@@ -2,7 +2,7 @@ class Solution {
 public:
     int numberOfBeams(vector<string>& bank) {
         
-        vector<int> allrows;
+       
         int prevCount=0;
         int ans=0;
         for(int i=0;i<bank.size();i++)
