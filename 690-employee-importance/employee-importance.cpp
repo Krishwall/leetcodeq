@@ -12,8 +12,8 @@ class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {
         unordered_map<int,pair<int,vector<int>>> children;
-        int n=employees.size();
-        for(int i=0;i<n;i++)
+        
+        for(int i=0;i<employees.size();i++)
         {
             children[employees[i]->id]={employees[i]->importance,employees[i]->subordinates};
         }
