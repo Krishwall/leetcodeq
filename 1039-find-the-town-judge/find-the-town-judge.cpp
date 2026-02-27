@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        vector<int>hash(n,0);
+        for(auto &a:trust)
+        {
+            hash[a[1]-1]++;
+            hash[a[0]-1]--;
+            
+        }
+
+        for(int i=0;i<n;i++)
+        {
+            if(hash[i]==n-1)
+            return i+1;
+        }
+        return -1;
+
+
+
+    }
+};
