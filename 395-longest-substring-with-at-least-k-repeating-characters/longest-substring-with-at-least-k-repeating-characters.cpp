@@ -2,32 +2,57 @@ class Solution {
 public:
     int longestSubstring(string s, int k) {
         int n=s.size();
-        return dividenconquer(s,0,n,k);
+        int maxUnique=0;
+        unordered_set<char> aa;
+        for(auto& a:s)
+        {
+            aa.insert(a);
+        }
+        maxUnique=aa.size();
+        // delete (aa);
+
+        unordered_map<int,int> countMap;
+        int result=0;
+        for(int currUnique=1;currUnique<=maxUnique;currUnique++)
+        {   
+            countMap.clear();
+            int start=0,end=0,ch=0,unique=0,countAtLeastK=0;
+
+            while(end<s.size())
+            {
+                if(unique<=currUnique)
+                {
+                    ch=s[end]-'a';
+                    if(countMap[ch]==0)
+                        unique++;
+                    countMap[ch]++;
+
+                    if(countMap[ch]==k)
+                        countAtLeastK++;
+                    end++;
+                }
+                else
+                {
+                    ch=s[start]-'a';
+                    if(countMap[ch]==k)
+                        countAtLeastK--;
+                    
+                    countMap[ch]--;
+                    if(countMap[ch]==0)
+                    unique--;
+                    start++;
+                }
+
+                if(unique==currUnique && unique==countAtLeastK)
+                    result=max(end-start,result);
+            }
+        }
+
+        return result;
 
     }
 
-    int dividenconquer(string& s,int l,int r,int k)
-    {
-        unordered_map<char,int> mapp;
-        if(r<k) return 0;
-        for(int i=l;i<r;i++)
-        {
-            mapp[s[i]]++;
+    
 
-        }
-        for(int mid=l;mid<r;mid++)
-        {
-            if(mapp[s[mid]]>=k)
-            continue;
-
-            int midNext=mid+1;
-            while(midNext<r && mapp[s[midNext]]<k)
-                midNext++;
-
-            return max(dividenconquer(s,l,mid,k),dividenconquer(s,midNext,r,k));
-        }
-        return (r-l);
-
-
-    }
+    
 };
