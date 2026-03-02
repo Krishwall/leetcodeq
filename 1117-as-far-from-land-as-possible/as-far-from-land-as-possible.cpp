@@ -3,14 +3,14 @@ public:
     int maxDistance(vector<vector<int>>& grid) {
         
         queue<pair<int,int>> q;
-        
+        vector<vector<int>> visited=grid;
         int n=grid.size();
 
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<n;j++)
             {
-                if(grid[i][j]==1)
+                if(visited[i][j]==1)
                     q.push({i,j});
             }
         }
@@ -35,9 +35,9 @@ public:
                     {
                         int nr=x+delrow[i];
                         int nc=y+delcol[i];
-                        if(nr>=0 && nr<n && nc>=0 && nc<n && grid[nr][nc]==0)
+                        if(nr>=0 && nr<n && nc>=0 && nc<n && visited[nr][nc]==0)
                             {
-                                grid[nr][nc]=1;
+                                visited[nr][nc]=1;
                                 q.push({nr,nc});
                             }
                     }
