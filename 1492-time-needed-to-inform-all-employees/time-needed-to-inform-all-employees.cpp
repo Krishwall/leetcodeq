@@ -1,26 +1,25 @@
 class Solution {
 public:
-    int numOfMinutes(int n, int headID, vector<int>& manager, vector<int>& informTime) {
-        int max_min=INT_MIN;
-        for(int i=0;i<informTime.size();i++)
-        {
-            if(informTime[i]==0)
-            {
-                max_min=max(max_min,getInfoTime(i,manager,informTime));
-            }
+    int dfs(int node, vector<vector<int>>& adj, vector<int>& informTime) {
+        int maxTime = 0;
+
+        for (int child : adj[node]) {
+            maxTime = max(maxTime, dfs(child, adj, informTime));
         }
-        return max_min;
+
+        return informTime[node] + maxTime;
     }
 
-    int getInfoTime(int index,vector<int>& manager,vector<int>& informTime)
-    {
-        int time=0;
-        while(manager[index]!=-1)
-        {
-            time+=informTime[index];
-            index=manager[index];
+    int numOfMinutes(int n, int headID, vector<int>& manager, vector<int>& informTime) {
+        vector<vector<int>> adj(n);
+
+        // Build tree
+        for (int i = 0; i < n; i++) {
+            if (manager[i] != -1) {
+                adj[manager[i]].push_back(i);
+            }
         }
-        time+=informTime[index];
-        return time;
+
+        return dfs(headID, adj, informTime);
     }
 };
