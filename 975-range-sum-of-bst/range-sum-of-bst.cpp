@@ -15,7 +15,7 @@ public:
         if(!root ) return 0;
         if(root->val>=low && root->val<=high)
         return root->val +rangeSumBST(root->left,low,high)+rangeSumBST(root->right,low,high);
-        else 
+        
         return 0+rangeSumBST(root->left,low,high)+rangeSumBST(root->right,low,high);
     }
 };
