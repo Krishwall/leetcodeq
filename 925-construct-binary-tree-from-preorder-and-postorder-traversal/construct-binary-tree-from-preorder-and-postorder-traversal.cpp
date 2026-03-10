@@ -11,8 +11,8 @@
  */
 class Solution {
 public:
-    int preIdx=0,postidx=0; 
-        unordered_map<int,int> post_val_idx;
+    
+    unordered_map<int,int> post_val_idx;
     TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
         int n=preorder.size();
         for(int i=0;i<n;i++)
