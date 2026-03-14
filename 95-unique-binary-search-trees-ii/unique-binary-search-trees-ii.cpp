@@ -12,14 +12,16 @@
 class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
-        vector<vector<TreeNode*>> dp;
+        vector<vector<vector<TreeNode*>>> dp(n+1, vector<vector<TreeNode*>>(n+1));
 
         return generate(1,n,dp);
     }
-    vector<TreeNode*> generate(int left,int right,vector<vector<TreeNode*>> dp)
+    vector<TreeNode*> generate(int left,int right,vector<vector<vector<TreeNode*>>>& dp)
     {
         if(left> right)
             return {NULL};
+        if (!dp[left][right].empty())
+            return dp[left][right];
         vector<TreeNode*> res;
         for (int val=left;val<=right;val++)
         {
@@ -32,6 +34,7 @@ public:
                     }
                 }
         }
+        dp[left][right]=res;
         return res;
     }
 };
