@@ -11,34 +11,28 @@
  */
 class Solution {
 public:
+int cameras=0;
     int minCameraCover(TreeNode* root) {
-        int ans=0;
-        unordered_set<TreeNode*> covered;
-        covered.insert(NULL);
-        minCam(root,NULL,covered,ans);
-        return ans;
-        
+        if(minCam(root)==0) cameras++;
+        return cameras;
     }
 
 private:
-        void minCam(TreeNode* node,TreeNode* par,unordered_set<TreeNode*>& covered, int& ans)
-        {
-            if(node!=NULL){
-                minCam(node->left,node,covered,ans);
-                minCam(node->right,node,covered,ans);
+        int minCam(TreeNode* node){
+            if(!node) 
+            return 2;
+            int left = minCam(node->left);
+            int right=minCam(node->right);
 
-                if(par==NULL && covered.find(node)==covered.end()
-                    || covered.find(node->left)==covered.end() || 
-                    covered.find(node->right)==covered.end())
-                    {
-                        ans++;
-                        covered.insert(node);
-                        covered.insert(par);
-                        covered.insert(node->left);
-                        covered.insert(node->right);
-
-                    }
+            if(left==0 || right==0)
+            {
+                cameras++;
+                return 1;
             }
-        
+            if(left==1 || right ==1)
+            {
+                return 2;
+            }
+            return 0;
         }
 };
