@@ -8,7 +8,7 @@ public:
             adj[pairs[i][1]].insert(pairs[i][0]);
         }
         priority_queue<pair<int,int>> pq;
-        for(auto [node,neighbours]:adj)
+        for(auto& [node,neighbours]:adj)
         {
             pq.push(make_pair(neighbours.size(),node));
         }
