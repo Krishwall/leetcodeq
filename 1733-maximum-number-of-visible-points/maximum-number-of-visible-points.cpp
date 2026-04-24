@@ -1,7 +1,7 @@
 class Solution {
 public:
     int visiblePoints(vector<vector<int>>& points, int angle, vector<int>& location) {
-        int n=points.size();
+        
         vector<double> indexAngle;
         int same =0;
         for (auto &p : points) {
@@ -27,10 +27,10 @@ public:
         int maxPoints=0;
         for(auto a:indexAngle)
             cout<<a<<"  ";
-        n=indexAngle.size();
+        int n=indexAngle.size();
         while(r<n)
         {
-            while((indexAngle[r]-indexAngle[l])>angle)
+            if((indexAngle[r]-indexAngle[l])>angle)
                 {l++;}
             
                 maxPoints=max(maxPoints,r-l+1);
