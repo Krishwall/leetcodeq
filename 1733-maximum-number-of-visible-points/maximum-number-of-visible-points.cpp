@@ -25,12 +25,11 @@ public:
         int l=0,r=0;
         
         int maxPoints=0;
-        for(auto a:indexAngle)
-            cout<<a<<"  ";
+       
         int n=indexAngle.size();
         while(r<n)
         {
-            if((indexAngle[r]-indexAngle[l])>angle)
+            while((indexAngle[r]-indexAngle[l])>angle)
                 {l++;}
             
                 maxPoints=max(maxPoints,r-l+1);
