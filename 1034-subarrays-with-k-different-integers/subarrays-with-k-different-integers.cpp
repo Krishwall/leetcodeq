@@ -1,29 +1,35 @@
 class Solution {
-public:
-    int subarraysWithKDistinct(vector<int>& nums, int k) {
+private:
+    int helper(vector<int>& nums,int k)
+    {
+        unordered_map<int,int>  numFreq;
+        // unordered_set<int> set;
+        int subCount=0;
         int n=nums.size();
-        return func(nums,k,n) - func(nums,k-1,n);
-    }
-
-    int func(vector<int>& nums, int k,int n)
-    {   
-        int l=0,r=0,cnt=0,ans=0;
-        vector<int> hash(n+1,0);
-        while(r<n)
+        int l=0,r=0;
+        while(r<n) 
         {
-            hash[nums[r]]++;
-            if(hash[nums[r]]==1) cnt++;
-            while(cnt>k)
-            {
-                hash[nums[l]]--;
-                if(hash[nums[l]]==0) cnt--;
-                 l++;   
-
-            }
-           ans+=r-l+1;
-            r++;
+            numFreq[nums[r]]++;
             
-        }   
-        return ans;
+            while(numFreq.size()>k)
+            {
+                numFreq[nums[l]]--;
+                if(numFreq[nums[l]]==0)
+                    numFreq.erase(nums[l]);
+                ++l;
+            }
+            subCount+=(r-l+1);
+            r++;
+
+        }
+
+        return subCount;
+    }
+public:
+
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+
+        return helper(nums,k)-helper(nums,k-1);
+        
     }
 };
