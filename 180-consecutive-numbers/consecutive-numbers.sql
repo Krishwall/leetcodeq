@@ -1,15 +1,13 @@
-# Write your MySQL query statement below
+/* Write your PL/SQL query statement below */
 
-Select Distinct 
-l1.num as ConsecutiveNums
-From 
-    Logs l1,
-    Logs l2,
-    Logs l3
-Where 
-l1.id=l2.id-1
-AND l2.id=l3.id-1
-AND l1.num=l2.num
-And l1.num=l3.num
-;
+SELECT DISTINCT num as ConsecutiveNums from
+(
+    Select
+    num,
+    @count:= if(@prev = (@prev:=num),@count+1,1) as freq
 
+    from Logs,(select @count:=0,@prev:=(select num from logs limit 1))as c
+
+)  as n
+where 
+freq>2;
