@@ -5,7 +5,7 @@ public:
         return "";
         stack<pair<char,int>> st;
 
-        for(char c:s)
+        for(char& c:s)
         {
             if(!st.empty() && st.top().first==c)
             {
@@ -22,7 +22,7 @@ public:
 
         string result="";
         while(!st.empty()) {
-            auto [ch,count]=st.top();
+            auto& [ch,count]=st.top();
             st.pop();
             result=string(count,ch) + result;
         }
