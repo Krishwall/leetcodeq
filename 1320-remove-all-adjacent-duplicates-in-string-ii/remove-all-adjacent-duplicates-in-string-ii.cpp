@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string removeDuplicates(string s, int k) {
+        if(k==1)
+        return "";
+        stack<pair<char,int>> st;
+
+        for(char c:s)
+        {
+            if(!st.empty() && st.top().first==c)
+            {
+                st.top().second++;
+                if(st.top().second==k)
+                {
+                    st.pop();
+                }
+            }
+            else {
+                st.push({c,1});
+            }
+        }
+
+        string result="";
+        while(!st.empty()) {
+            auto [ch,count]=st.top();
+            st.pop();
+            result=string(count,ch) + result;
+        }
+
+        return result;
+    }
+};
