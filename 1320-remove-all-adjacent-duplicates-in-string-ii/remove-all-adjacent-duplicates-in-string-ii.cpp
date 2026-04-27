@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string removeDuplicates(string s, int k) {
+    string removeDuplicates(string& s, int k) {
         if(k==1)
         return "";
         stack<pair<char,int>> st;
@@ -24,7 +24,7 @@ public:
         while(!st.empty()) {
             auto& [ch,count]=st.top();
             st.pop();
-            result=string(count,ch) + result;
+            result=string(count,ch) + result; /////  !!!!!!!!
         }
 
         return result;
