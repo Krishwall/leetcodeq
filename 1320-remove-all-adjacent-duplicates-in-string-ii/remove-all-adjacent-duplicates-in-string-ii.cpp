@@ -1,8 +1,7 @@
 class Solution {
 public:
     string removeDuplicates(string& s, int k) {
-        if(k==1)
-        return "";
+        
         stack<pair<char,int>> st;
 
         for(char& c:s)
