@@ -16,9 +16,7 @@ public:
                     st.pop();
                 }
             
-            if(st.empty())
-            ans[i]=0;    
-            else
+            if(!st.empty())
             ans[i]=st.top().second-i;
             st.push({curr,i});
         }
