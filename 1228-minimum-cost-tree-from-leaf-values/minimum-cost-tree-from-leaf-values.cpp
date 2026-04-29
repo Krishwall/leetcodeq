@@ -11,7 +11,7 @@ public:
         int res=0;
         for(int& curr:arr)
         {
-            while(!st.empty() && st.top()<curr)
+            while(!st.empty() && st.top()<=curr)
             {
                 int a=st.top();
                 st.pop();
