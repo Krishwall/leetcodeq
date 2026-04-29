@@ -9,15 +9,15 @@ public:
         stack<int> st;
         st.push(INT_MAX);
         int res=0;
-        for(int i=0;i<n;i++)
+        for(int& curr:arr)
         {
-            while(!st.empty() && st.top()<arr[i])
+            while(!st.empty() && st.top()<curr)
             {
                 int a=st.top();
                 st.pop();
-                res+=a*min(st.top(),arr[i]);
+                res+=a*min(st.top(),curr);
             }
-            st.push(arr[i]);
+            st.push(curr);
         }
 
         while(st.size()>2)
