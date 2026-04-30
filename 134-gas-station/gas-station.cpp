@@ -8,7 +8,7 @@ public:
 
         for(int i=0;i<gas.size();i++)
         {   
-            long diff=gas[i]-cost[i];
+            int diff=gas[i]-cost[i];
             total+=diff;
             tank+=diff;
             if(tank<0)
