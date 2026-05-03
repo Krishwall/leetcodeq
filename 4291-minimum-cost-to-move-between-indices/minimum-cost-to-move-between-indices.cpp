@@ -19,7 +19,7 @@ public:
             suffi[i-1]=suffi[i]+((diffFromRight>=diffFromLeft)?1:diffFromLeft);
         }
         vector<int> ans;
-        for(auto it: queries)
+        for(auto& it: queries)
         {   
             int l=it[0];
             int r=it[1];
